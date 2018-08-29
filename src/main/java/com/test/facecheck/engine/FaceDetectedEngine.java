@@ -11,7 +11,7 @@ import com.test.facecheck.constant.FdOrientPriority;
 import com.test.facecheck.entity.ASVLOFFSCREEN;
 import com.test.facecheck.entity.MRect;
 import com.test.facecheck.entity.FaceInfo;
-import com.test.facecheck.entity.FdFaceres;
+import com.test.facecheck.entity.Faceres;
 import com.test.facecheck.entity.SdkVersion;
 import com.test.facecheck.libs.CLibrary;
 import com.test.facecheck.libs.FaceDetectionLibrary;
@@ -34,7 +34,7 @@ public class FaceDetectedEngine {
 	private Pointer FDEngine;
 	// 分配给引擎使用的内存地址
 	private Pointer FDWorkMem;
-	// 人脸识别检测
+	// 人脸检测依赖
 	private FaceDetectionLibrary FDLibrary;
 	
 	/**
@@ -47,7 +47,9 @@ public class FaceDetectedEngine {
 		initFaceDetection();
 	}
 	
-	
+	/**
+	 * 初始化参数
+	 */
 	private void init() {
 		try {
 			// 分配给引擎使用的内存地址
@@ -94,6 +96,10 @@ public class FaceDetectedEngine {
 		System.out.println(version.getVersion());
 	}
 	
+	/**
+	 * 获得人脸检测引擎
+	 * @return 引擎
+	 */
 	public Pointer getFDEngine(){
 		return FDEngine;
 	}
@@ -116,7 +122,7 @@ public class FaceDetectedEngine {
 			return faceInfo;
 		}
 		// 将人脸检测结果存入人脸存储数组
-		FdFaceres faceRes = new FdFaceres(ppFaceRes.getValue());
+		Faceres faceRes = new Faceres(ppFaceRes.getValue());
 		// 循环将位置存入数组
 		if (faceRes.nFace > 0) {
 			faceInfo = new FaceInfo[faceRes.nFace];
@@ -135,13 +141,15 @@ public class FaceDetectedEngine {
 	}
 	
 	/**
-	 * 销毁引擎，释放相应资源
+	 * 销毁引擎,释放相应资源
 	 */
 	public void uninitialFaceEngine() {
-		// 销毁引擎
-		FDLibrary.uninitialFaceEngine(FDEngine);
-		// 释放占用的内存
-		CLibrary.free(FDWorkMem);
+		if(FDEngine!=null){
+			// 销毁引擎
+			FDLibrary.uninitialFaceEngine(FDEngine);
+			// 释放占用的内存
+			CLibrary.free(FDWorkMem);
+		}
 	}
 	
 	
