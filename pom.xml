@@ -17,6 +17,5 @@
 			<artifactId>jna</artifactId>
 			<version>4.5.1</version>
 		</dependency>
-		<!-- opencv -->
 	</dependencies>
 </project>
