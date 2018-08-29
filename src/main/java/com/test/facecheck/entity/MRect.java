@@ -2,7 +2,6 @@ package com.test.facecheck.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 /**
