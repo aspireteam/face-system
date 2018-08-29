@@ -30,13 +30,13 @@ public class FaceWindow {
 	private int x,y,width,height;
 	
 	/**
-	 * 构造方法，执行初始化
+	 * 构造方法,执行初始化
 	 */
 	public FaceWindow() {
 		initialize();
 	}
 	/**
-	 * 构造方法，设置窗口大小，执行初始化
+	 * 构造方法,设置窗口大小,执行初始化
 	 */
 	public FaceWindow(int jFwidth,int jFheight) {
 		this.jFwidth = jFheight;
@@ -100,7 +100,7 @@ public class FaceWindow {
 		frame.setBounds(0, 0, jFwidth, jFheight);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setResizable(false);
-		// 设置窗口启动后，根据系统分辨率大小设置居中显示
+		// 设置窗口启动后,根据系统分辨率大小设置居中显示
 		int frameWidth = (Toolkit.getDefaultToolkit().getScreenSize().width - frame.getWidth()) / 2;
 		int frameHeight = (Toolkit.getDefaultToolkit().getScreenSize().height - frame.getHeight()) / 2;
 		frame.setLocation(frameWidth, frameHeight);
@@ -108,6 +108,7 @@ public class FaceWindow {
 		// 视频区域
 		JPanel videoJPanel = new JPanel();
 		videoJPanel.setBackground(Color.CYAN);
+		videoJPanel.setLayout(new BorderLayout(0, 0));
 		frame.getContentPane().add(videoJPanel, BorderLayout.CENTER);
 
 		videlJLabel = new JLabel();
@@ -117,8 +118,7 @@ public class FaceWindow {
 		infoJPanel = new JPanel() {
 			private static final long serialVersionUID = -8843812097304572932L;
 			public void paint(Graphics g){
-				// 	1. 调用父类函数完成初始化任务
-				//	这句话不可以少
+				// 调用父类函数完成初始化任务
 				super.paint(g);
 				g.setColor(color);
 				// 先画出一个圆圈
@@ -141,6 +141,7 @@ public class FaceWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					// 显示窗口
 					window.frame.setVisible(true);
 					// 测试绘制的颜色
 					window.setColor(Color.red);
