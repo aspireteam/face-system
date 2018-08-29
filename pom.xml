@@ -18,10 +18,5 @@
 			<version>4.5.1</version>
 		</dependency>
 		<!-- opencv -->
-		<dependency>
-			<groupId>org.bytedeco.javacpp-presets</groupId>
-			<artifactId>opencv</artifactId>
-			<version>3.4.2-1.4.2</version>
-		</dependency>
 	</dependencies>
 </project>
