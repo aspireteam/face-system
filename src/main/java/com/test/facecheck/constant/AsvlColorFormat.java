@@ -1,6 +1,6 @@
 package com.test.facecheck.constant;
 /**
- * 视频格式定义
+ * 颜色格式及其对齐规则
  */
 public class AsvlColorFormat {
     public static final int ASVL_PAF_I420 = 0x601;
